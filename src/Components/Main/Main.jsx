@@ -2,7 +2,7 @@
 import "./Main.css"
 import hand_fold from "../assets/hand_fold.png"
 import arrow_icon from "../assets/arrow.png"
-import mandir from "../assets/mandir.png"
+import mandir from "../assets/demo.png"
 
 
 const Main = () => {
@@ -12,10 +12,10 @@ const Main = () => {
             <h2>Bring Home Blessings</h2>
             <div>
                 <div className="main-hand-icon">
-                    <p>New</p>
+                    <p>दिव्य</p>
                     <img src={hand_fold} alt=""/>
                 </div>
-                <p>Divine Collections</p>
+                <p>Collections</p>
                 <p>for your Home</p>
             </div>
             <div className="main-btn">
