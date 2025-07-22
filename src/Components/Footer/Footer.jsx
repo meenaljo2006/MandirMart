@@ -12,9 +12,8 @@ const Footer = () => {
             <p>Mandir Mart</p>
         </div>
         <ul className="footer-links">
-            <li>Company</li>
             <li>Product</li>
-            <li>Offices</li>
+            <li>Our Stores</li>
             <li>About</li>
             <li>Contact</li>
         </ul>

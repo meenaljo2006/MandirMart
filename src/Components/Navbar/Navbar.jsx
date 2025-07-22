@@ -19,7 +19,6 @@ const Navbar = ()=>{
                 <li onClick={()=>{setMenu("mandirs")}}><Link style={{textDecoration:"none"}} to="/mandirs">Mandirs</Link>{menu==="mandirs"?<hr/>:<></>}</li>
                 <li onClick={()=>{setMenu("idols")}}><Link style={{textDecoration:"none"}} to="/idols">Idols</Link>{menu==="idols"?<hr/>:<></>}</li>
                 <li onClick={()=>{setMenu("puja")}}><Link style={{textDecoration:"none"}} to="/puja">Puja Samagri</Link>{menu==="puja"?<hr/>:<></>}</li>
-                <li onClick={()=>{setMenu("decor")}}><Link style={{textDecoration:"none"}} to="/decors">Decors</Link>{menu==="decor"?<hr/>:<></>}</li>
             </ul>
             <div className="nav-login-cart">
                 <Link to="/login"><button>Login</button></Link>

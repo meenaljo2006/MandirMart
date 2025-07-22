@@ -7,6 +7,7 @@ import LoginSignup from './Pages/LoginSignup'
 import Product from "./Pages/Product"
 import Cart from "./Pages/Cart"
 import Footer from './Components/Footer/Footer'
+import mandir_banner from "./Components/assets/mandir_banner.png"
 
 function App() {
   
@@ -18,10 +19,9 @@ function App() {
            <Navbar/>
            <Routes>
               <Route path="/" element={<Home/>}/>
-              <Route path="/mandirs" element={<ShopCategory category="mandirs"/>}/>
-              <Route path="/idols" element={<ShopCategory category="idols"/>}/>
-              <Route path="/puja" element={<ShopCategory category="puja"/>}/>
-              <Route path="/decors" element={<ShopCategory category="decors"/>}/>
+              <Route path="/mandirs" element={<ShopCategory banner={mandir_banner} category="mandirs"/>}/>
+              <Route path="/idols" element={<ShopCategory banner={mandir_banner} category="idols"/>}/>
+              <Route path="/puja" element={<ShopCategory banner={mandir_banner} category="puja"/>}/>
               <Route path="/Product/:productId" element={<Product/>}/>
               <Route path="/cart" element={<Cart/>}/>
               <Route path="/login" element={<LoginSignup/>}/>
