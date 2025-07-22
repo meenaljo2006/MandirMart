@@ -57,3 +57,9 @@
     align-items: center;
     justify-content: center;
 }
+
+.main-right img{
+    height: 600px;
+    width: 600px;
+    padding-right: 40px;
+}
