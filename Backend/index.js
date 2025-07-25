@@ -204,9 +204,18 @@ app.post("/login",async(req,res)=>{
             res.json({success:false,errors:"Wrong Password"});
         }
     } else{
-        res.json({success:false,errors:"Wrong Email Id"});
+        res.json({success:false,errors:"Not Registered ! Please Register"});
     }
 });
+
+//creating endpoint for related collection
+app.get("/relatedCollection",async(req,res)=>{
+    let products = await Product.find({});
+    const shuffled = products.sort(() => 0.5 - Math.random());
+    const relatedCollection = shuffled.slice(0, 4);
+    console.log("Related Collection Fetched");
+    res.send(relatedCollection);
+})
 
 
 app.listen(port,(error)=>{
