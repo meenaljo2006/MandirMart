@@ -10,6 +10,11 @@ const Product = () => {
     const{all_product} = useContext(HomeContext);
     const{productId} = useParams();
     const product = all_product.find((e)=> e.id===Number(productId));
+
+    if (!product) {
+        return <div style={{ padding: "2rem" }}>Loading product...</div>;
+    }
+  
     return(
         <div>
             <Breadcrum product ={product}/>

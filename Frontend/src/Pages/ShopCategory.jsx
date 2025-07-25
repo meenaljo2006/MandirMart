@@ -3,10 +3,10 @@ import "./CSS/ShopCategory.css"
 import {HomeContext} from "../Context/HomeContext"
 import dropdown_icon from "../Components/assets/dropdown_icon.png"
 import Item from "../Components/Item/Item"
-import all_product from "../Components/assets/all_product"
 
 const ShopCategory = (props) => {
     const {all_product} = useContext(HomeContext);
+
     return(
         <div className="shop-category">
             <img className="shopcategory-banner"src={props.banner} alt=""/>
