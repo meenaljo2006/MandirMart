@@ -1,6 +1,6 @@
 .main{
     height: 100vh;
-    background:linear-gradient(180deg,#fde1ff,#e1ffea22 60%);
+    background:linear-gradient(180deg,#e3de90,#e1ffea22 60%);
     display: flex;
 }
 
@@ -36,7 +36,7 @@
     width:105px;
 }
 
-.main-btn{
+.main-btn {
     display: flex;
     justify-content: center;
     align-items: center;

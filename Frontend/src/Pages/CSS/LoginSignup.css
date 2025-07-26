@@ -1,13 +1,13 @@
 .loginsignup{
     width: 100%;
     height: 100vh;
-    background: #fce3fe;
-    padding-top: 100px;
+    background:linear-gradient(180deg,#e3de90,#e1ffea22 90%);
+    padding-top: 50px;
 }
 
 .loginsignup-container{
     width:580px;
-    height: 520px;
+    height: 550px;
     background: white;
     margin: auto;
     padding: 40px 60px;
@@ -31,6 +31,16 @@
     outline: none;
     color: #5c5c5c;
     font-size: 18px;
+}
+
+.role{
+    padding: 8px;
+    width: 110px;
+    height: 40px;
+    font-size: 14px;
+    color: #5c5c5c;
+    border: 1px solid #7b7b7b8d;
+    border-radius: 4px;
 }
 
 .loginsignup-container button{

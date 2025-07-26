@@ -29,7 +29,7 @@ const HomeContextProvider = (props) => {
             "auth-token":`${localStorage.getItem('auth-token')}`,
             "Content-Type":'application/json'
           },
-          body:"",
+          body: JSON.stringify({})
         })
         .then((res)=>res.json())
         .then((data)=>setCartItems(data));
@@ -38,6 +38,13 @@ const HomeContextProvider = (props) => {
     },[])
     
     const addToCart = (itemId) =>{
+
+      if (!localStorage.getItem("auth-token")) {
+        alert("Please login to add items to the cart.");
+        window.location.replace("/login");
+        
+      }
+
       setCartItems((prev)=>({...prev,[itemId]:prev[itemId]+1}));
       if(localStorage.getItem("auth-token")){
         fetch("http://localhost:4000/addtocart",{

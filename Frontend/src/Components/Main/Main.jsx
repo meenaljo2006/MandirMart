@@ -3,6 +3,7 @@ import "./Main.css"
 import hand_fold from "../assets/hand_fold.png"
 import arrow_icon from "../assets/arrow.png"
 import mandir from "../assets/demo.png"
+import { Link } from "react-router-dom"
 
 
 const Main = () => {
@@ -18,10 +19,12 @@ const Main = () => {
                 <p>Collections</p>
                 <p>for your Home</p>
             </div>
-            <div className="main-btn">
-                <div>Shop Now</div>
-                <img src={arrow_icon} alt=""/>
-            </div>
+            <Link to="/mandirs" style={{ textDecoration: "none"}}>
+                <div className="main-btn">
+                    <div>Shop Now</div>
+                    <img src={arrow_icon} alt="arrow" />
+                </div>
+            </Link>
         </div>
         <div className="main-right">
             <img src={mandir} alt=""/>
