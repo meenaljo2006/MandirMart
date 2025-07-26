@@ -6,10 +6,9 @@ const jwt = require("jsonwebtoken");
 const multer = require("multer");
 const path = require("path");
 const cors = require("cors");
-const { error } = require('console');
 
 
-const port = 4000;
+const port = process.env.PORT;
 
 app.use(express.json());
 app.use(cors());
@@ -188,7 +187,7 @@ app.post("/signup",async(req,res)=>{
         }
     }
 
-    const token = jwt.sign(data,"secret_ecom");
+    const token = jwt.sign(data,process.env.JWT_SECRET);
     res.json({success:true,token,role:user.role});
 })
 
@@ -204,7 +203,7 @@ app.post("/login",async(req,res)=>{
                 }
             }
 
-            const token = jwt.sign(data,"secret_ecom");
+            const token = jwt.sign(data,process.env.JWT_SECRET);
             res.json({success:true,token,role: user.role });
         } else{
             res.json({success:false,errors:"Wrong Password"});
@@ -230,7 +229,7 @@ const fetchUser = async(req,res,next)=>{
         res.status(401).send({errors:"Please authenticate using valid token"})
     } else{
         try{
-            const data = jwt.verify(token,"secret_ecom");
+            const data = jwt.verify(token,process.env.JWT_SECRET);
             req.user = data.user;
             next();
 

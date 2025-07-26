@@ -13,8 +13,30 @@
 }
 
 .nav-profile{
-    width: 75px;
+    width: 50px;
 }
+
+.navinfo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #000;
+    padding-left: 10px;
+    cursor: pointer;
+    height: 20px;
+}
+
+.nav-name::before {
+  content: "Meenal Joshi";
+}
+
+/* When screen is max 400px, show MJ */
+@media (max-width: 400px) {
+  .nav-name::before {
+    content: "MJ";
+  }
+}
+
 
 @media(max-width:800px){
     .navbar{
@@ -25,8 +47,8 @@
         width: 150px;
     }
 
-    .nav-profile{
-        width: 60px;
+    .navinfo p{
+        font-size: smaller;
     }
     
 

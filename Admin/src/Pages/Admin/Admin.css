@@ -2,8 +2,10 @@
     display: flex;
 }
 
-.admin .sidebar{
-    height: 100vh;
+.navinfo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 @media(max-width:800px){
