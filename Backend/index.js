@@ -148,6 +148,10 @@ const Users = mongoose.model("Users",{
     password:{
         type:String
     },
+    role:{
+        type:String,
+        default:"buyer"
+    },
     cartData:{
         type:Object
     },
@@ -172,7 +176,8 @@ app.post("/signup",async(req,res)=>{
         name:req.body.username,
         email:req.body.email,
         password:req.body.password,
-        cartData:cart
+        cartData:cart,
+        role: req.body.role,
     })
 
     await user.save();
@@ -184,7 +189,7 @@ app.post("/signup",async(req,res)=>{
     }
 
     const token = jwt.sign(data,"secret_ecom");
-    res.json({success:true,token});
+    res.json({success:true,token,role:user.role});
 })
 
 //creating endpoint for user login
@@ -194,12 +199,13 @@ app.post("/login",async(req,res)=>{
         const passCompare = req.body.password === user.password;
         if(passCompare){
             const data ={
-                user:{                    id:user.id
+                user:{                    
+                    id:user.id
                 }
             }
 
             const token = jwt.sign(data,"secret_ecom");
-            res.json({success:true,token});
+            res.json({success:true,token,role: user.role });
         } else{
             res.json({success:false,errors:"Wrong Password"});
         }
@@ -229,7 +235,7 @@ const fetchUser = async(req,res,next)=>{
             next();
 
         }catch{
-            req.status(401).send({errors:"Please authenticate using a valid token"});
+            res.status(401).send({errors:"Please authenticate using a valid token"});
 
         }
     }
