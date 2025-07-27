@@ -1,0 +1,31 @@
+.cancel-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  /* background: #fff7f7; */
+  background:linear-gradient(180deg,#e3de90,#e1ffea22 100%);
+}
+
+.cancel-card {
+  text-align: center;
+  padding: 2rem;
+  background: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  border-radius: 10px;
+}
+
+.cancel-card h2 {
+  color: red;
+  margin-bottom: 1rem;
+}
+
+.cancel-card button {
+  margin-top: 1rem;
+  padding: 10px 20px;
+  background: #f44336;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

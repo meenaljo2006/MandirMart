@@ -7,6 +7,7 @@ import LoginSignup from './Pages/LoginSignup'
 import Product from "./Pages/Product"
 import Cart from "./Pages/Cart"
 import Footer from './Components/Footer/Footer'
+import AfterPayment from './Pages/afterPayment'
 import mandir_banner from "./Components/assets/mandir_banner.png"
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
               <Route path="/puja" element={<ShopCategory banner={mandir_banner} category="puja"/>}/>
               <Route path="/Product/:productId" element={<Product/>}/>
               <Route path="/cart" element={<Cart/>}/>
+              <Route path="/payment" element={<AfterPayment/>} />
               <Route path="/login" element={<LoginSignup/>}/>
            </Routes>
            <Footer/>
