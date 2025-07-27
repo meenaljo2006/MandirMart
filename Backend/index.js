@@ -7,8 +7,10 @@ const multer = require("multer");
 const path = require("path");
 const cors = require("cors");
 
+const stripe = require("stripe")(process.env.STRIPE_SECRET);
 
 const port = process.env.PORT;
+console.log(port);
 
 app.use(express.json());
 app.use(cors());
@@ -29,7 +31,8 @@ app.get("/",(req,res)=>{
 const storage = multer.diskStorage({
     destination: "./upload/images",
     filename:(req,file,cb)=>{
-        return cb(null,`${file.fieldname}_${Date.now()} ${path.extname(file.originalname)}`)
+        const cleanOriginal = file.originalname.replace(/\s+/g, "_");
+        return cb(null,`${file.fieldname}_${Date.now()}${path.extname(cleanOriginal)}`)
     }
 })
 
@@ -118,7 +121,7 @@ app.post("/addProduct",async(req,res)=>{
     })
 })
 
-//Creating API fro deleting products
+//Creating API for deleting products
 app.post("/removeproduct",async(req,res)=>{
     await Product.findOneAndDelete({id:req.body.id});
     console.log("Removed");
@@ -188,7 +191,7 @@ app.post("/signup",async(req,res)=>{
     }
 
     const token = jwt.sign(data,process.env.JWT_SECRET);
-    res.json({success:true,token,role:user.role});
+    res.json({success:true,token,role:user.role,username:user.name});
 })
 
 //creating endpoint for user login
@@ -204,7 +207,7 @@ app.post("/login",async(req,res)=>{
             }
 
             const token = jwt.sign(data,process.env.JWT_SECRET);
-            res.json({success:true,token,role: user.role });
+            res.json({success:true,token,role: user.role,username:user.name });
         } else{
             res.json({success:false,errors:"Wrong Password"});
         }
@@ -244,7 +247,9 @@ const fetchUser = async(req,res,next)=>{
 app.post("/addtocart",fetchUser,async(req,res)=>{
     console.log("Added",req.body.itemId);
     let userData = await Users.findOne({_id:req.user.id});
-    userData.cartData[req.body.itemId] += 1;
+    const itemId = req.body.itemId.toString();
+    const currentCount = Number(userData.cartData[itemId]) || 0;
+    userData.cartData[itemId] = currentCount + 1;
     await Users.findOneAndUpdate({_id:req.user.id},{cartData:userData.cartData});
     res.send("Added");
 })
@@ -265,6 +270,48 @@ app.post("/getcart",fetchUser,async(req,res)=>{
     let userData = await Users.findOne({_id:req.user.id});
     res.json(userData.cartData);
 })
+
+//checkout stripe payment
+app.post("/create-checkout-session",async(req,res)=>{
+    try{
+        const {products} =req.body;
+        console.log("Products received in backend:", products);
+
+        if (!products || products.length === 0) {
+            return res.status(400).json({ error: "No products received" });
+        }
+
+        const lineItems = products.map((product) =>({
+            price_data:{
+                currency:"inr",
+                product_data:{
+                    name:product.name,
+                    images: [product.image.trim().replace(/\s/g, "%20")]
+
+                },
+                unit_amount:Math.round(product.price*100),
+            },
+            quantity:product.quantity
+        }));
+
+        const session = await stripe.checkout.sessions.create({
+            payment_method_types:["card"],
+            line_items:lineItems,
+            mode:"payment",
+
+            success_url:"http://localhost:5713/success",
+            cancel_url:"http://localhost:5713/cancel"
+        })
+
+        res.json({id:session.id})
+
+    } catch(err){
+        console.error("Stripe Error:", err);
+        res.status(500).json({ error: "Payment session creation failed" });
+    }
+    
+})
+
 
 
 app.listen(port,(error)=>{
