@@ -299,8 +299,8 @@ app.post("/create-checkout-session",async(req,res)=>{
             line_items:lineItems,
             mode:"payment",
 
-            success_url:"http://localhost:5713/success",
-            cancel_url:"http://localhost:5713/cancel"
+            success_url:"http://localhost:5173/payment?status=success",
+            cancel_url:"http://localhost:5173/payment?status=cancel"
         })
 
         res.json({id:session.id})
@@ -311,6 +311,19 @@ app.post("/create-checkout-session",async(req,res)=>{
     }
     
 })
+
+//After succesful payement cleanCart
+app.post("/clearcart", fetchUser, async (req, res) => {
+    try {
+        const user = await Users.findById(req.user.id);
+        user.cartData = {}; 
+        await user.save();
+        res.json({ success: true, message: "Cart cleared" });
+    } catch (err) {
+        console.error("❌ Error clearing cart:", err);
+        res.status(500).json({ success: false, message: "Server error" });
+    }
+});
 
 
 
