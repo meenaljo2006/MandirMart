@@ -1,6 +1,7 @@
 import "./Navbar.css"
 import logo from "../assets/logo2.png"
 import cart_icon from "../assets/cart_icon.png"
+import person_icon from "../assets/personIcon.jpg"
 import { Link ,useLocation} from 'react-router-dom';
 import { useContext, useRef, useState } from "react"
 import { HomeContext } from "../../Context/HomeContext";
@@ -12,11 +13,16 @@ const Navbar = ()=>{
     const{getTotalCartItems} = useContext(HomeContext);
     const location = useLocation();
     const menuRef = useRef();
+    
 
     const dropdown_toggle =()=>{
         menuRef.current.classList.toggle("nav-menu-visible");
         e.target.classList.toggle("open");
     }
+
+    const username = localStorage.getItem("username");
+    const initial = username ? username.charAt(0).toUpperCase() : "?";
+
 
     return(
         <div className="navbar">
@@ -31,12 +37,21 @@ const Navbar = ()=>{
                 <li onClick={()=>{setMenu("idols")}}><Link style={{textDecoration:"none"}} to="/idols">Idols</Link>{location.pathname === "/idols" && <hr />}</li>
                 <li onClick={()=>{setMenu("puja")}}><Link style={{textDecoration:"none"}} to="/puja">Puja Samagri</Link>{location.pathname === "/puja" && <hr />}</li>
             </ul>
+                
             <div className="nav-login-cart">
+
                 {localStorage.getItem("auth-token")?<button onClick={()=>{localStorage.removeItem("auth-token"); window.location.replace("/")}}>Logout</button>
                 :<Link to="/login"><button>Login</button></Link>}
-                
+
                 <Link to="/cart"><img src={cart_icon} alt=""/></Link>
                 <div className="nav-cart-count">{getTotalCartItems()}</div>
+
+                {localStorage.getItem("auth-token")?
+                <div className="info">
+                    <div className="nav-user-initial">{initial}</div>
+                </div>
+                : <img className="person-icon" src={person_icon} alt="Login" />}
+
             </div>
         </div>
     )

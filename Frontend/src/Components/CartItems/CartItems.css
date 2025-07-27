@@ -30,9 +30,13 @@
 }
 
 .cartitems-remove-icon{
-    width:15px;
-    margin:0px 40px;
-    cursor: pointer;
+    width: 45px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.cartitems-remove-icon:hover{
+    transform: scale(1.2);
 }
 
 .cartitems-quantity{
