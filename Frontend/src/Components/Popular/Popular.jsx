@@ -10,7 +10,7 @@ const Popular = () => {
   const scrollRef = useRef(null);
 
   useEffect(()=>{
-    fetch("http://localhost:4000/relatedCollection")
+    fetch("https://mandirmart.onrender.com/relatedCollection")
     .then((res)=>res.json())
     .then((data)=>setPopularProduct(data));
   },[])

@@ -20,7 +20,7 @@ const LoginSignup = () => {
     const login = async()=>{
         console.log("Login Function Executed",formData);
         let responseData;
-        await fetch("http://localhost:4000/login",{
+        await fetch("https://mandirmart.onrender.com/login",{
             method:'POST',
             headers:{
                 Accept:"application/form-data",
@@ -36,7 +36,7 @@ const LoginSignup = () => {
 
 
             if (responseData.role === "admin") {
-                window.location.replace('http://localhost:5174/addproduct'); // redirect seller
+                window.location.replace('https://mandirmart.onrender.com/addproduct'); // redirect seller
             } else {
             window.location.replace('/'); // redirect buyer
             }
@@ -50,7 +50,7 @@ const LoginSignup = () => {
     const signup = async() =>{
         console.log("Sign Up Function Executed",formData);
         let responseData;
-        await fetch("http://localhost:4000/signup",{
+        await fetch("https://mandirmart.onrender.com/signup",{
             method:'POST',
             headers:{
                 Accept:"application/form-data",
@@ -66,7 +66,7 @@ const LoginSignup = () => {
 
 
             if (responseData.role === "admin") {
-                window.location.replace('http://localhost:5174/addproduct'); // redirect seller
+                window.location.replace('https://mandirmart.onrender.com/addproduct'); // redirect seller
             } else {
             window.location.replace('/'); // redirect buyer
             }

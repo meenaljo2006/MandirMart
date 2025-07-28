@@ -17,12 +17,12 @@ const HomeContextProvider = (props) => {
     const [cartItems,setCartItems] = useState(getDefaultCart());
 
     useEffect(()=>{
-      fetch("http://localhost:4000/allproducts")
+      fetch("https://mandirmart.onrender.com/allproducts")
       .then((response)=> response.json())
       .then((data)=>setAll_Product(data))
 
       if(localStorage.getItem("auth-token")){
-        fetch("http://localhost:4000/getcart",{
+        fetch("https://mandirmart.onrender.com/getcart",{
           method:'POST',
           headers:{
             Accept:"application/form-data",
@@ -47,7 +47,7 @@ const HomeContextProvider = (props) => {
 
       setCartItems((prev)=>({...prev,[itemId]:prev[itemId]+1}));
       if(localStorage.getItem("auth-token")){
-        fetch("http://localhost:4000/addtocart",{
+        fetch("https://mandirmart.onrender.com/addtocart",{
           method:'POST',
           headers:{
             Accept:"application/form-data",
@@ -66,7 +66,7 @@ const HomeContextProvider = (props) => {
       setCartItems((prev)=>({...prev,[itemId]:prev[itemId]-1}))
 
       if(localStorage.getItem("auth-token")){
-        fetch("http://localhost:4000/removefromcart",{
+        fetch("https://mandirmart.onrender.com/removefromcart",{
           method:'POST',
           headers:{
             Accept:"application/form-data",

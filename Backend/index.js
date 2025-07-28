@@ -51,7 +51,7 @@ app.post("/upload",upload.single("product"),(req,res)=>{
 
     res.json({
         success:1,
-        image_url:`http://localhost:${port}/images/${req.file.filename}`
+        image_url:`https://mandirmart.onrender.com/images/${req.file.filename}`
     })
 
 })
@@ -299,8 +299,8 @@ app.post("/create-checkout-session",async(req,res)=>{
             line_items:lineItems,
             mode:"payment",
 
-            success_url:"http://localhost:5173/payment?status=success",
-            cancel_url:"http://localhost:5173/payment?status=cancel"
+            success_url:"https://mandirmart.onrender.com/payment?status=success",
+            cancel_url:"https://mandirmart.onrender.com/payment?status=cancel"
         })
 
         res.json({id:session.id})

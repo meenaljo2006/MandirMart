@@ -25,7 +25,7 @@ const CartItems = () => {
             }
 
         console.log("Cart being sent to backend:", cart)
-        const response = await fetch (`http://localhost:4000/create-checkout-session`,{
+        const response = await fetch (`https://mandirmart.onrender.com/create-checkout-session`,{
             method:"POST",
             headers:{
                 'Content-Type':"application/json"

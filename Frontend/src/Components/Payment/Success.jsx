@@ -4,7 +4,7 @@ import "./Success.css"
 const Success = () => {
 
   useEffect(() => {
-    fetch("http://localhost:4000/clearcart", {
+    fetch("https://mandirmart.onrender.com/clearcart", {
       method: "POST",
       headers: {
         "auth-token": localStorage.getItem("auth-token"),

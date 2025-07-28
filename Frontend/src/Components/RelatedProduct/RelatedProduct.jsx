@@ -9,7 +9,7 @@ const RelatedProduct = () => {
 
 
   useEffect(()=>{
-    fetch("http://localhost:4000/relatedCollection")
+    fetch("https://mandirmart.onrender.com/relatedCollection")
     .then((res)=>res.json())
     .then((data)=>setRelatedProduct(data));
   },[])
