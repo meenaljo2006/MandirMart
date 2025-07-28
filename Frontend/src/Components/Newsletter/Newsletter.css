@@ -1,12 +1,12 @@
 .newsletter{
-    width:80%;
+
     height:60vh;
     display:flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     margin: auto;
-    padding:0px 140px;
+    padding:0px 80px;
     gap :30px;
     background: #e8ebaf;
 }
@@ -16,12 +16,14 @@
     color: #454545;
     font-size: 55px;
     font-weight: 600;
+    text-align: center;
 }
 
 .newsletter p {
     color: #454545;
     font-size: 20px;
     font-weight: 500;
+    text-align: center;
 }
 
 .newsletter div{
@@ -56,3 +58,62 @@
     cursor: pointer;
 }
 
+
+@media (max-width: 775px) {
+  .newsletter h1 {
+    font-size: 36px;
+  }
+
+  .newsletter p {
+    font-size: 18px;
+  }
+
+  .newsletter div {
+    height: 40px;
+    padding: 10px;
+    gap: 10px;
+    border-radius: 70px;
+    width: 350px;
+  }
+
+  .newsletter input {
+    width: 300px;
+    margin: 0;
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  .newsletter div button {
+    width: 150px;
+    height: 50px;
+    border-radius: 70px;
+  }
+}
+
+
+@media (max-width: 425px) {
+
+    .newsletter div {
+        flex-direction: column;
+        height:90px;
+        padding: 10px;
+        gap: 10px;
+        border-radius: 20px;
+        width: 250px;
+    }
+
+    .newsletter input {
+        width: 200px;
+        margin: 0;
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    .newsletter div button {
+        width: 150px;
+        height: 50px;
+        border-radius: 10px;
+        margin-bottom: 5px;
+    }
+  
+}

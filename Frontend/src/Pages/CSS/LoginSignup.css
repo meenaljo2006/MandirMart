@@ -1,6 +1,6 @@
 .loginsignup{
     width: 100%;
-    height: 100vh;
+    height: 80vh;
     background:linear-gradient(180deg,#e3de90,#e1ffea22 90%);
     padding-top: 50px;
 }
@@ -75,4 +75,64 @@
     color: #5c5c5c;
     font-size: 18px;
     font-weight: 500;
+}
+
+
+@media (max-width: 768px) {
+  .loginsignup-container {
+    width: 70%;
+    height: auto;
+    padding: 20px 40px;
+  }
+
+  .loginsignup-container button {
+    width: 100%;
+    font-size: 20px;
+  }
+
+  .loginsignup-fields input {
+    font-size: 16px;
+  }
+
+  .loginsignup-agree {
+    font-size: 16px;
+    /* flex-direction: column; */
+    align-items: center;
+    gap: 10px;
+  }
+
+  .loginsignup-login {
+    font-size: 16px;
+    text-align: center;
+  }
+}
+
+
+@media (max-width: 400px) {
+  .loginsignup-container h1 {
+    font-size: 26px;
+    text-align: center;
+  }
+
+  .loginsignup-container {
+    padding: 20px 15px;
+  }
+
+  .loginsignup-fields input {
+    height: 45px;
+    font-size: 15px;
+  }
+
+  .loginsignup-container button {
+    font-size: 18px;
+    height: 45px;
+  }
+
+  .loginsignup-agree {
+    font-size: 14px;
+  }
+
+  .loginsignup-login {
+    font-size: 15px;
+  }
 }

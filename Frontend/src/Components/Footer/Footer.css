@@ -65,5 +65,55 @@
     border-radius: 10px;
     height: 3px;
     background: #c7c7c7;
+}
 
+
+@media (max-width: 768px) {
+  .footer {
+    gap: 30px;
+    padding: 20px;
+    margin-top: 30px;
+  }
+
+  .footer-logo {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .footer-logo img {
+    height: 80px;
+    width: 80px;
+  }
+
+  .footer-logo p {
+    font-size: 32px;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    font-size: 18px;
+    padding: 0;
+  }
+
+  .footer-social-icon {
+    justify-content: center;
+  }
+
+  .footer-icons-container img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .footer-copyright {
+    font-size: 14px;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .footer-copyright hr {
+    width: 90%;
+  }
 }

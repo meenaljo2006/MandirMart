@@ -24,3 +24,23 @@
   border-radius: 6px;
   cursor: pointer;
 }
+
+@media (max-width: 400px) {
+  .success-card {
+    padding: 18px 20px;
+  }
+
+  .success-card h2 {
+    font-size: 20px;
+  }
+
+  .success-card p {
+    font-size: 14px;
+  }
+
+  .success-card button {
+    width: 60%;
+    padding: 10px;
+    font-size: 14px;
+  }
+}
