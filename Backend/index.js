@@ -315,12 +315,14 @@ app.post("/create-checkout-session",async(req,res)=>{
 //After succesful payement cleanCart
 app.post("/clearcart", fetchUser, async (req, res) => {
     try {
-        const user = await Users.findById(req.user.id);
-        user.cartData = {}; 
-        await user.save();
+        const cart = {};
+        for (let i = 0; i < 300; i++) {
+            cart[i] = 0;
+        }
+        await Users.findByIdAndUpdate(req.user.id, { cartData: cart });
         res.json({ success: true, message: "Cart cleared" });
     } catch (err) {
-        console.error("❌ Error clearing cart:", err);
+        console.error(" Error clearing cart:", err);
         res.status(500).json({ success: false, message: "Server error" });
     }
 });
