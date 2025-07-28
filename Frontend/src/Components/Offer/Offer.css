@@ -1,9 +1,9 @@
 .offers{
     width:65%;
-    height:60vh;
+    /* height:60vh; */
     display:flex;
-    /* margin-top: -50px; */
     margin: auto;
+    margin-top: 100px;
     padding:100px 140px;
     margin-bottom:50px;
     background:linear-gradient(180deg, #e3de90 0%, #e1ffea22 60%);
@@ -90,6 +90,7 @@
     flex-direction: column;
     align-items: center;
     padding: 40px 20px;
+    /* margin-top: 150px; */
   }
 
   .offers-left {

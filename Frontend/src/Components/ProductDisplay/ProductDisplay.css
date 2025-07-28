@@ -82,3 +82,43 @@
     outline: none;
     cursor: pointer;
 }
+
+@media (max-width:1222px){
+    .productdisplay{
+        flex-direction: column;
+    }
+
+    .productdisplay-left{
+        align-items: center;
+        justify-content: center;
+    }
+
+    .productdisplay-right{
+        margin-top: 30px;
+        margin-left: 10px;
+        margin-right: 10px;
+        
+    }
+}
+
+@media (max-width:910px){
+    .productdisplay-img-list{
+        display: none;
+    }
+
+    .productdisplay-main-img{
+        height: 450px;
+        width: 450px;
+    }
+
+    .productdisplay{
+        margin: 0 50px;
+    }
+}
+
+@media (max-width:500px){
+    .productdisplay-main-img{
+        height: 200px;
+        width: 200px;
+    }
+}

@@ -48,68 +48,62 @@ const CartItems = () => {
 
   return (
     <div className='cartitems'>
-        <div className="cartitems-format-main">
-            <p>Products</p>
-            <p>Title</p>
-            <p>Price</p>
-            <p>Quantity</p>
-            <p>Total</p>
-            <p>Remove</p>
+        <div className="cartitems-table-wrapper">
+            <table className="cartitems-table">
+                <thead>
+                    <tr>
+                    <th>Product</th>
+                    <th>Title</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th>Remove</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {all_product.map((e) => {
+                    if (cartItems[e.id] > 0) {
+                        return (
+                        <tr key={e.id}>
+                            <td><img src={e.image} alt={e.name} className="carticon-product-icon" /></td>
+                            <td>{e.name}</td>
+                            <td>Rs.{e.new_price}</td>
+                            <td>
+                            <button className="cartitems-quantity">{cartItems[e.id]}</button>
+                            </td>
+                            <td>Rs.{e.new_price * cartItems[e.id]}</td>
+                            <td>
+                            <img
+                                src={remove_icon}
+                                alt="Remove"
+                                className="cartitems-remove-icon"
+                                onClick={() => removeFromCart(e.id)}
+                            />
+                            </td>
+                        </tr>
+                        );
+                    }
+                    return null;
+                    })}
+
+                    <tr className="summary-row">
+                        <td colSpan="4" style={{ textAlign: "left", fontWeight: "bold" }}>Subtotal</td>
+                        <td colSpan="2"style={{ textAlign: "right"}}>Rs.{getTotalCartAmount()}</td>
+                    </tr>
+                    <tr className="summary-row">
+                        <td colSpan="4" style={{ textAlign: "left", fontWeight: "bold" }}>Shipping Fee</td>
+                        <td colSpan="2" style={{ textAlign: "right"}}>Free</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-        <hr/>
 
-        {all_product.map((e)=>{
-            if(cartItems[e.id]>0){
-                return <div>
-                            <div className="cartitems-format cartitems-format-main ">
-                                <img src={e.image} alt="" className='carticon-product-icon'/>
-                                <p>{e.name}</p>
-                                <p>Rs.{e.new_price}</p>
-                                <button className='cartitems-quantity'>{cartItems[e.id]}</button>
-                                <p>Rs.{e.new_price*cartItems[e.id]}</p>
-                                <img className="cartitems-remove-icon"src={remove_icon} onClick={()=>{removeFromCart(e.id)}} alt=""/>
-                            </div>
-                        </div>
-
-            }
-
-            return null;
-        })}
-        <div className="cartitems-down">
-            <div className="cartitems-total">
-                <h1>Cart Totals</h1>
-                <div>
-                    <div className="cartitems-total-item">
-                        <p>Subtotal</p>
-                        <p>Rs.{getTotalCartAmount()}</p>
-                    </div>
-                    <hr/>
-                    <div className="cartitems-total-item">
-                        <p>Shipping Fee</p>
-                        <p>Free</p>
-                    </div>
-                    <hr/>
-                    <div className="cartitems-total-item">
-                        <h3>Total</h3>
-                        <h3>Rs.{getTotalCartAmount()}</h3>
-                    </div>
-                </div>
-                <button onClick={makePayment}>PROCEED TO CHECKOUT</button>
-            </div>
-            <div className="cartitems-promocode">
-                <p>If you have a promo code, Enter it here</p>
-                <div className="cartitems-promobox">
-                    <input type="text" placeholder='Promo Code'/>
-                    <button>Submit</button>
-                </div>
-            </div>
-
-
-
+        <div className="cartitems-checkout">
+             <p style={{ fontWeight: "bold" ,marginBottom:"15px"}}>Total = Rs.{getTotalCartAmount()}</p>
+            <button onClick={makePayment}>PROCEED TO CHECKOUT</button>
         </div>
-        
-
     </div>
+        
   )
 }
 
