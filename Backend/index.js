@@ -299,8 +299,8 @@ app.post("/create-checkout-session",async(req,res)=>{
             line_items:lineItems,
             mode:"payment",
 
-            success_url:"https://mandirmart.onrender.com/payment?status=success",
-            cancel_url:"https://mandirmart.onrender.com/payment?status=cancel"
+            success_url:"https://mandirmart.vercel.app/payment?status=success",
+            cancel_url:"https://mandirmart.vercel.app/payment?status=cancel"
         })
 
         res.json({id:session.id})
