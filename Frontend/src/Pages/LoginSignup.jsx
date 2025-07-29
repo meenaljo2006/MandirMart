@@ -36,7 +36,7 @@ const LoginSignup = () => {
 
 
             if (responseData.role === "admin") {
-                window.location.replace('https://mandirmart.onrender.com/addproduct'); // redirect seller
+                window.location.replace('https://mandirmart-adminpanel.vercel.app/addproduct'); // redirect seller
             } else {
             window.location.replace('/'); // redirect buyer
             }
@@ -66,7 +66,7 @@ const LoginSignup = () => {
 
 
             if (responseData.role === "admin") {
-                window.location.replace('https://mandirmart.onrender.com/addproduct'); // redirect seller
+                window.location.replace('https://mandirmart-adminpanel.vercel.app/addproduct'); // redirect seller
             } else {
             window.location.replace('/'); // redirect buyer
             }
