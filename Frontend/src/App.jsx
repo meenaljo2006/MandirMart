@@ -1,6 +1,7 @@
 import './App.css'
 import Navbar from './Components/Navbar/Navbar'
 import { BrowserRouter,Routes, Route } from 'react-router-dom'
+import { useEffect } from 'react'
 import Home from "./Pages/Home"
 import ShopCategory from './Pages/ShopCategory'
 import LoginSignup from './Pages/LoginSignup'
@@ -11,6 +12,17 @@ import AfterPayment from './Pages/afterPayment'
 import mandir_banner from "./Components/assets/mandir_banner.png"
 
 function App() {
+
+  useEffect(() => {
+    // Ping every 10 minutes to keep server alive
+    const interval = setInterval(() => {
+      fetch("https://mandirmart.onrender.com/")
+        .then((res) => console.log("Server pinged"))
+        .catch((err) => console.error("Ping failed", err));
+    }, 12 * 60 * 1000); // 12 minutes
+
+    return () => clearInterval(interval); // Clean up on unmount
+  }, []);
   
 
   return (
