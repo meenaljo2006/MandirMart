@@ -3,9 +3,11 @@ const express = require("express");
 const app = express();
 const mongoose  = require("mongoose");
 const jwt = require("jsonwebtoken");
-const multer = require("multer");
-const path = require("path");
 const cors = require("cors");
+
+const { storage } = require("./cloudinary");
+const multer = require("multer");
+const upload = multer({ storage }); 
 
 const stripe = require("stripe")(process.env.STRIPE_SECRET);
 
@@ -27,34 +29,20 @@ app.get("/",(req,res)=>{
 
 })
 
-//Image Storage Engine
-const storage = multer.diskStorage({
-    destination: "./upload/images",
-    filename:(req,file,cb)=>{
-        const cleanOriginal = file.originalname.replace(/\s+/g, "_");
-        return cb(null,`${file.fieldname}_${Date.now()}${path.extname(cleanOriginal)}`)
-    }
-})
-
-const upload = multer({storage:storage})
-
 //creating upload endpoint for images
-app.use("/images",express.static("upload/images"))
-app.post("/upload",upload.single("product"),(req,res)=>{
-
-    if (!req.file) {
+app.post("/upload", upload.single("product"), (req, res) => {
+    if (!req.file || !req.file.path) {
         return res.status(400).json({
-            success: 0,
-            message: "No file uploaded. Did you send it with field name 'product'?"
+        success: 0,
+        message: "Image upload failed",
         });
     }
 
     res.json({
-        success:1,
-        image_url:`https://mandirmart.onrender.com/images/${req.file.filename}`
-    })
-
-})
+        success: 1,
+        image_url: req.file.path, // This is the public Cloudinary URL
+    });
+});
 
 //Schema for creating Products
 
